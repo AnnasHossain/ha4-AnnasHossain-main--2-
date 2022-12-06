@@ -7,7 +7,7 @@ public class TypoTolerantInputParser implements ExtendableInputParser {
 
     @Override
     public Map<Long, Integer> idsAndCountFromInput(String inputLine, Map<String, Long> keywordsToIds) {
-
+        
         Map<Long, Integer> IDsCountMap = new HashMap<>();
         
         String[] strArr = inputLine.split(" " );
