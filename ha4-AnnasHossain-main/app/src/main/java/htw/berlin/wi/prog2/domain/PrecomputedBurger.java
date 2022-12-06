@@ -18,7 +18,7 @@ public class PrecomputedBurger implements Burger {
 
     @Override
     public BigDecimal calculatePrice() {
-        return price;
+        return price.setScale(2);
     }
 
     @Override

@@ -2,6 +2,8 @@ package htw.berlin.wi.prog2.domain;
 
 import java.math.BigDecimal;
 
+import org.w3c.dom.Text;
+
 public class IngredientBuilder {
 
     private String name;
@@ -24,6 +26,21 @@ public class IngredientBuilder {
     }
 
     public Ingredient build(Ingredient.Category cat) {
-        return new Ingredient(name, price, calories); // TODO hier die richtige Unterklasse instanziieren
+
+        if(cat == Ingredient.Category.TOPPING){
+            return new Topping(name, price, calories);
+        }
+        else if(cat == Ingredient.Category.SAUCE){
+            return new Sauce(name, price, calories);
+        }
+        else if(cat == Ingredient.Category.PROTEIN){
+            return new Protein(name, price, calories);
+        }
+        else if(cat == Ingredient.Category.BASE){
+            return new Base(name, price, calories);
+        }
+        else{
+            return null;
+        }        // TODO hier die richtige Unterklasse instanziieren
     }
 }

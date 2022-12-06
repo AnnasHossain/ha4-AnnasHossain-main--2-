@@ -15,6 +15,8 @@ class BurgerBuilderTest {
 
     private final Ingredient sauce = ingBuilder.setName("Mayo").setPrice("0.01").setCals(2000).build(Ingredient.Category.SAUCE);
     private final Ingredient base = ingBuilder.setName("Brot").setPrice("0.02").setCals(1000).build(Ingredient.Category.BASE);
+    private final Ingredient protein = ingBuilder.setName("Fleisch").setPrice("0.90").setCals(1000).build(Ingredient.Category.PROTEIN);
+
 
     @Test
     @DisplayName("can build a precomputed burger with two ingredients")
@@ -66,4 +68,19 @@ class BurgerBuilderTest {
         assertThrows(IllegalBurgerException.class, builder::build);
         assertThrows(IllegalBurgerException.class, () -> builder.add(base).build());
     }
+
+    @Test
+    @DisplayName("a burger should have at least one sauce")
+    void checkNumberOfSauce(){
+        assertThrows(IllegalBurgerException.class, builder::build);
+        assertThrows(IllegalBurgerException.class, () -> builder.add(base).add(protein).build());
+    }
+
+    @Test
+    @DisplayName("a burger should have not more than two Brot-Base")
+    void checkNumberOfBase(){
+        assertThrows(IllegalBurgerException.class, builder::build);
+        assertThrows(IllegalBurgerException.class, () -> builder.add(base).add(base).add(sauce).build());
+    }
+
 }

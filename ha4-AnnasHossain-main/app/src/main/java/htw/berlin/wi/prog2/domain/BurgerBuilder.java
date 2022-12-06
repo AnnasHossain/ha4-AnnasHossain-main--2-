@@ -1,6 +1,6 @@
 package htw.berlin.wi.prog2.domain;
 
-import htw.berlin.wi.prog2.data.Menu; // TODO Diesen Import sollten Sie nach Teilaufgabe 4 entfernen können
+//import htw.berlin.wi.prog2.data.Menu; // TODO Diesen Import sollten Sie nach Teilaufgabe 4 entfernen können
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -36,10 +36,10 @@ public class BurgerBuilder {
         if(ingredients.size() < 2) throw new IllegalBurgerException("Nicht genügend Zutaten");
 
         // TODO hier mit ingredient.getCategory() statt mit Menu.bases und Menu.sauces arbeiten
-        if(ingredients.stream().filter((ing) -> Menu.bases.containsValue(ing)).collect(Collectors.toList()).size() > 1)
+        if(ingredients.stream().filter((ingredient) -> ingredient.getCategory()==Ingredient.Category.BASE).collect(Collectors.toList()).size() > 1)
             throw new IllegalBurgerException("Zwei mal Brot-Basis in einem Burger geht nicht");
 
-        if(ingredients.stream().filter((ing) -> Menu.sauces.containsValue(ing)).collect(Collectors.toList()).size() < 1)
+        if(ingredients.stream().filter((ingredient) -> ingredient.getCategory()==Ingredient.Category.SAUCE).collect(Collectors.toList()).size() < 1)
             throw new IllegalBurgerException("Ein Burger braucht mindestens eine Sauce");
     }
 

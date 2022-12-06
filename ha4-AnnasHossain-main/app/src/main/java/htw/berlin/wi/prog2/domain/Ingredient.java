@@ -2,31 +2,14 @@ package htw.berlin.wi.prog2.domain;
 
 import java.math.BigDecimal;
 
-public class Ingredient {
-    private final String name;
-    private final BigDecimal price;
-    private final int calories;
+public interface Ingredient{
 
-    public Ingredient(String name, BigDecimal price, int calories) {
-        this.name = name;
-        this.price = price;
-        this.calories = calories;
-    }
 
-    public String getName() {
-        return name;
-    }
+    public String getName();
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+    public BigDecimal getPrice();
 
-    public int getCalories() {
-        return calories;
-    }
-
-    @Override
-    public String toString() { return this.getName(); }
+    public int getCalories();
 
     public enum Category {
         BASE,
@@ -34,4 +17,10 @@ public class Ingredient {
         TOPPING,
         SAUCE
     }
+
+   public Ingredient.Category getCategory();
+
+
+    @Override
+    public String toString();
 }
